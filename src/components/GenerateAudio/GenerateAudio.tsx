@@ -217,13 +217,13 @@ export default function GenerateAudio() {
                 <Header
                     variant="h1"
                     description={
-                        <>
-                            Use{' '}
-                            <Link external href="https://aws.amazon.com/polly">
-                                Amazon Polly
-                            </Link>{' '}
-                            to generate an audio file.
-                        </>
+                        // <>
+                        //     Use{' '}
+                        //     <Link external href="https://aws.amazon.com/polly">
+                        //         Amazon Polly
+                        //     </Link>{' '}
+                        //     to generate an audio file.
+                        // </>
                     }
                     actions={
                         <SpaceBetween direction="horizontal" size="xs">
