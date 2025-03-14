@@ -155,9 +155,9 @@ export default function NewConversation() {
 
         // Add initial progress flash message
         updateProgressBar({
-            id: `New HealthScribe Job: ${jobName}`,
+            id: `New clinical ai Job: ${jobName}`,
             value: 0,
-            description: 'Upload to S3 in progress...',
+            description: 'Upload in progress...',
         });
 
         try {
@@ -169,10 +169,10 @@ export default function NewConversation() {
             });
         } catch (e) {
             updateProgressBar({
-                id: `New HealthScribe Job: ${jobName}`,
+                id: `New clinical ai Job: ${jobName}`,
                 type: 'error',
                 value: 0,
-                description: 'Uploading files to S3 failed',
+                description: 'Uploading files failed',
                 additionalInfo: `Error uploading ${filePath!.name}: ${(e as Error).message}`,
             });
             setIsSubmitting(false);
@@ -183,11 +183,11 @@ export default function NewConversation() {
             const startJob = await startMedicalScribeJob(jobParams);
             if (startJob?.MedicalScribeJob?.MedicalScribeJobStatus) {
                 updateProgressBar({
-                    id: `New HealthScribe Job: ${jobName}`,
+                    id: `New clinicalai Job: ${jobName}`,
                     type: 'success',
                     value: 100,
-                    description: 'HealthScribe job submitted',
-                    additionalInfo: `Audio file successfully uploaded to S3 and submitted to HealthScribe at ${dayjs(
+                    description: 'clinicalai job submitted',
+                    additionalInfo: `Audio file successfully uploaded and submitted to clinicalai at ${dayjs(
                         startJob.MedicalScribeJob.StartTime
                     ).format('MM/DD/YYYY hh:mm A')}. Redirecting to conversation list in 5 seconds.`,
                 });
@@ -195,20 +195,20 @@ export default function NewConversation() {
                 navigate('/conversations');
             } else {
                 updateProgressBar({
-                    id: `New HealthScribe Job: ${jobName}`,
+                    id: `New clinicalai Job: ${jobName}`,
                     type: 'info',
                     value: 100,
-                    description: 'Unable to confirm HealthScribe job submission',
-                    additionalInfo: `Response from HealthScribe: ${JSON.stringify(startJob)}`,
+                    description: 'Unable to confirm clinicalai job submission',
+                    additionalInfo: `Response from clinicalai: ${JSON.stringify(startJob)}`,
                 });
             }
         } catch (e) {
             updateProgressBar({
-                id: `New HealthScribe Job: ${jobName}`,
+                id: `New clinicalai Job: ${jobName}`,
                 type: 'error',
                 value: 0,
-                description: 'Submitting job to HealthScribe failed',
-                additionalInfo: `Error submitting job to HealthScribe: ${(e as Error).message}`,
+                description: 'Submitting job to clinicalai failed',
+                additionalInfo: `Error submitting job to clinicalai: ${(e as Error).message}`,
             });
             setIsSubmitting(false);
             throw e;
