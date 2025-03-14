@@ -218,11 +218,7 @@ export default function GenerateAudio() {
                     variant="h1"
                     description={
                         <>
-                            Use{' '}
-                            <Link external href="https://aws.amazon.com/polly">
-                                Amazon Polly
-                            </Link>{' '}
-                            to generate an audio file.
+                            Use Load Template to generate an audio file.
                         </>
                     }
                     actions={
