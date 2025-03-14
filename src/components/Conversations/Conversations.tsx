@@ -86,9 +86,9 @@ export default function Conversations() {
         } catch (e: unknown) {
             setTableLoading(false);
             addFlashMessage({
-                id: e?.toString() || 'ListHealthScribeJobs error',
+                id: e?.toString() || 'ListJobs error',
                 header: 'Conversations Error',
-                content: e?.toString() || 'ListHealthScribeJobs error',
+                content: e?.toString() || 'ListJobs error',
                 type: 'error',
             });
         }
@@ -112,7 +112,7 @@ export default function Conversations() {
     // Table collection
     const { items, actions, collectionProps, paginationProps } = useCollection(healthScribeJobs, {
         filtering: {
-            empty: <TableEmptyState title="No HealthScribe jobs" subtitle="Try clearing the search filter." />,
+            empty: <TableEmptyState title="No clinicalai jobs" subtitle="Try clearing the search filter." />,
             noMatch: (
                 <TableEmptyState
                     title="No matches"
@@ -164,7 +164,7 @@ export default function Conversations() {
                 }
                 items={items}
                 loading={tableLoading}
-                loadingText="Loading HealthScribe jobs"
+                loadingText="Loading clinicalai jobs"
                 onSelectionChange={({ detail }) => setSelectedHealthScribeJob(detail.selectedItems)}
                 pagination={
                     <Pagination
